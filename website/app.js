@@ -37,6 +37,10 @@ function obtainData() {
     .then(()=>{
       getData('/localAPI')
     })
+    .then((result)=>{
+      updateUI(result)
+    })
+
 
 
 }
@@ -85,6 +89,45 @@ const getData = async (url) => {
   //
   const dataRetreived = await fetch(url);
   // transforming the data retreived into json
-  const finalData = await dataRetreived.json();
-  console.log(finalData)
+  const data = await dataRetreived.json();
+  return data
+  // console.log(data);
+  // // creating 3 divs for the date, temp, content
+  // const dateDiv = document.createElement('div');
+  // const tempDiv = document.createElement('div');
+  // const contentDiv = document.createElement('div');
+  // // adding id attribute to the elements as required in the rubric
+  // dateDiv.setAttribute('id', 'date');
+  // tempDiv.setAttribute('id','temp');
+  // contentDiv.setAttribute('id', 'content');
+  // // updating html content
+  // dateDiv.innerHTML = `<p>the date today is: ${data.date}.</p>`;
+  // tempDiv.innerHTML = `<p>the temperature today is: ${data.temp} degrees celesius</p>`;
+  // contentDiv.innerHTML = `<p>${data.feelings}</p>`;
+  // // appending created elements to the div with entryHolder id
+  // const entryHolderDiv = document.getElementById('entryHolder');
+  // entryHolderDiv.appendChild(dateDiv);
+  // entryHolderDiv.appendChild(tempDiv);
+  // entryHolderDiv.appendChild(contentDiv);
+};
+
+//function to update the UI with the data extracted
+function updateUI(data){
+  // creating 3 divs for the date, temp, content
+  const dateDiv = document.createElement('div');
+  const tempDiv = document.createElement('div');
+  const contentDiv = document.createElement('div');
+  // adding id attribute to the elements as required in the rubric
+  dateDiv.setAttribute('id', 'date');
+  tempDiv.setAttribute('id','temp');
+  contentDiv.setAttribute('id', 'content');
+  // updating html content
+  dateDiv.innerHTML = `<p>the date today is: ${data.date}.</p>`;
+  dateDiv.innerHTML = `<p>the temperature today is: ${data.temp} degrees celesius</p>`;
+  dateDiv.innerHTML = `<p>${data.feelings}</p>`;
+  // appending created elements to the div with entryHolder id
+  const entryHolderDiv = document.getElementById('entryHolder');
+  entryHolderDiv.appendChild(dateDiv);
+  entryHolderDiv.appendChild(tempDiv);
+  entryHolderDiv.appendChild(contentDiv);
 };
