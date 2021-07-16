@@ -25,7 +25,7 @@ app.listen(port, ()=>{
 })
 
 // get route to send the Internal API data to the client side
-app.get('/sendData', (req, res)=>{
+app.get('/localAPI', (req, res)=>{
   res.send(projectData)
 })
 
@@ -34,13 +34,4 @@ app.post('/receiveData', (req, res) => {
   // using object spread operator (...) to update the projectData object without modifying the request body
   projectData = {...req.body}
   res.send(projectData)
-  console.log(projectData)
 })
-
-
-//post route to receive the data obtaidned from the external API from the client side and push it to the projectData object
-
-
-
-
-// post route to recieve the data returned from the weather API

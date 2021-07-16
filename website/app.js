@@ -28,10 +28,17 @@ function obtainData() {
       return
     }
     // fetching the data from the external api using the zipcode and the apikey
-    const temperature = fetchData(basicURL, zipCode, apiKey);
-    console.log(temperature)
-    // sending the data to the Server
-    postData('/receiveData',newDate, temperature, content)
+    const temp = fetchData(basicURL, zipCode, apiKey)
+    // sending the data to the Server using .then to extract the temperature value from the promise
+    .then((temp)=>{
+      postData('/receiveData',newDate, temp, content);
+    })
+    // retreiving data back from the server
+    .then(()=>{
+      getData('/localAPI')
+    })
+
+
 }
 
 // async fetchData function that uses fetch to get the data from the external api
@@ -54,7 +61,7 @@ const fetchData = async (url, zip, key) => {
 
 
 // Async post to send the data to the server side
-// postData function with two parameters the url of the post route and the data object
+// postData function with 4 parameters the url of the post route and the three component of the data object required
 const postData = async (url, date, temp, feel)=>{
 
   await fetch(url, {
@@ -64,10 +71,20 @@ const postData = async (url, date, temp, feel)=>{
     headers: {
         'Content-Type': 'application/json',
     },
+    // stringfying the data to send it as an object to the server side
     body: JSON.stringify({
       date: date,
       temp: temp,
       feelings: feel
     }),
   });
+};
+
+// Async get request to get back the data from the server side
+const getData = async (url) => {
+  //
+  const dataRetreived = await fetch(url);
+  // transforming the data retreived into json
+  const finalData = await dataRetreived.json();
+  console.log(finalData)
 };
