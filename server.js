@@ -29,6 +29,15 @@ app.get('/sendData', (req, res)=>{
   res.send(projectData)
 })
 
+// post request to recieve the data from the client side post body and updating the projectData object with the new data obtained
+app.post('/receiveData', (req, res) => {
+  // using object spread operator (...) to update the projectData object without modifying the request body
+  projectData = {...req.body}
+  res.send(projectData)
+  console.log(projectData)
+})
+
+
 //post route to receive the data obtaidned from the external API from the client side and push it to the projectData object
 
 
