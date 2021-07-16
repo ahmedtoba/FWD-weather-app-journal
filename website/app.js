@@ -43,7 +43,7 @@ const fetchData = async (url, zip, key) => {
     const obtainedData = await responseData.json();
     const temp = obtainedData.main.temp;
     // return only the required temp data
-    return(double(temp))
+    return temp
   }
   // and using catch to alert the user that the zipcode is wrong and displaying the error in the console
   catch (err) {
