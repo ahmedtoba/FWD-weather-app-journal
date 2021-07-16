@@ -1,5 +1,5 @@
 body{
-    background: #fffff8;
+    background: #f23557;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -8,7 +8,6 @@ body{
     grid-auto-rows: minmax(150px, auto);
     grid-template-columns: minmax(150px, 3);
     height:100vh;
-    background: #f23557;
     color: #f0d43a;
     justify-content: center;
     grid-gap: 1em;
@@ -30,7 +29,7 @@ body{
 }
 
 #entryHolder{
-
+  font-size: 0.8em;
 }
 
 #date{
