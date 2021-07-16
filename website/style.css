@@ -6,7 +6,7 @@ body{
 #app{
     display: grid;
     grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
+    grid-template-columns: minmax(150px, 3);
     height:100vh;
     background: #f23557;
     color: #f0d43a;
@@ -20,8 +20,13 @@ body{
 
 }
 
+.feeling {
+  display: flex;
+
+}
 .entry{
     background: rgba(59, 74, 107, .4);
+
 }
 
 #entryHolder{
@@ -65,8 +70,8 @@ input{
 }
 
 button{
-    width: 400px;
-    height: 100px;
+    width: 200px;
+    height: 70px;
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
@@ -92,20 +97,20 @@ button:focus {
     outline: none;
 }
 /* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+::placeholder { /* Firefox, Chrome, Opera */
+    color: #f0d43a;
     font-family: 'Oswald', sans-serif;
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #f0d43a;
     font-family: 'Oswald', sans-serif;
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #f0d43a;
     font-family: 'Oswald', sans-serif;
 
-} 
+}
