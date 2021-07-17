@@ -88,7 +88,13 @@ const getData = async (url) => {
   // transforming the data retreived into json
   const data = await dataRetreived.json();
   console.log(data);
+  //Check wether there are older data and remove it if existing to replace it with the new data
+  const entry = document.getElementById('entryHolder')
+  if (entry != null){
+    entry.remove();
+  }
   // creating 3 divs for the date, temp, content
+  const entryHolderDiv = document.createElement('div');
   const dateDiv = document.createElement('div');
   const tempDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
@@ -96,13 +102,15 @@ const getData = async (url) => {
   dateDiv.setAttribute('id', 'date');
   tempDiv.setAttribute('id','temp');
   contentDiv.setAttribute('id', 'content');
+  entryHolderDiv.setAttribute('id', 'entryHolder');
   // updating html content
   dateDiv.innerHTML = `<p>The date today is: ${data.date}.</p>`;
   tempDiv.innerHTML = `<p>The temperature today is: ${data.temp} &#8451;.</p>`;
   contentDiv.innerHTML = `<p>Feeling: ${data.feelings}</p>`;
-  // appending created elements to the div with entryHolder id
-  const entryHolderDiv = document.getElementById('entryHolder');
+  // appending created elements to the created div with entryHolder id
   entryHolderDiv.appendChild(dateDiv);
   entryHolderDiv.appendChild(tempDiv);
   entryHolderDiv.appendChild(contentDiv);
+  const holderDiv = document.querySelector('.entry');
+  holderDiv.appendChild(entryHolderDiv)
 };
